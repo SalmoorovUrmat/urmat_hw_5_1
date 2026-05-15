@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:urmat_hw_5_1/book.dart';
 
 class BookDetailsScreen extends StatelessWidget {
-    final Book book; 
+  final Book book;
 
-  const BookDetailsScreen({required this.book});
+  const BookDetailsScreen({super.key, required this.book});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,14 +21,19 @@ class BookDetailsScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 30),
         child: Column(
           children: [
-            // Обложка
             Center(
               child: Container(
                 height: 300,
                 width: 200,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 20, spreadRadius: 5)],
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 20,
+                      spreadRadius: 5,
+                    ),
+                  ],
                   image: DecorationImage(
                     image: AssetImage("assets/book.png"),
                     fit: BoxFit.cover,
@@ -37,11 +42,17 @@ class BookDetailsScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 25),
-            Text("Becoming", style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
-            Text("Michelle Obama", style: TextStyle(fontSize: 18, color: Colors.grey)),
-            
+            Text(
+              "Becoming",
+              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+            ),
+            Text(
+              "Michelle Obama",
+              style: TextStyle(fontSize: 18, color: Colors.grey),
+            ),
+
             const SizedBox(height: 30),
-            // Статистика (Gênero, Launched, Size)
+
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -50,20 +61,39 @@ class BookDetailsScreen extends StatelessWidget {
                 _buildStat("Size", "448\nPáginas"),
               ],
             ),
-            
+
             const SizedBox(height: 30),
-            // Синопсис
+
             Align(
               alignment: Alignment.centerLeft,
-              child: Text("Synopsis", style: TextStyle(color: Colors.grey[400], fontWeight: FontWeight.bold)),
+              child: Text(
+                "Synopsis",
+                style: TextStyle(
+                  color: Colors.grey[400],
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
             const SizedBox(height: 10),
             RichText(
               text: TextSpan(
-                style: TextStyle(color: Colors.black87, fontSize: 15, height: 1.5),
+                style: TextStyle(
+                  color: Colors.black87,
+                  fontSize: 15,
+                  height: 1.5,
+                ),
                 children: [
-                  TextSpan(text: "An intimate, powerful, and inspiring memoir by the former First Lady... "),
-                  TextSpan(text: "MORE", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
+                  TextSpan(
+                    text:
+                        "An intimate, powerful, and inspiring memoir by the former First Lady... ",
+                  ),
+                  TextSpan(
+                    text: "MORE",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -77,9 +107,15 @@ class BookDetailsScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label.toUpperCase(), style: TextStyle(fontSize: 10, color: Colors.grey)),
+        Text(
+          label.toUpperCase(),
+          style: TextStyle(fontSize: 10, color: Colors.grey),
+        ),
         const SizedBox(height: 4),
-        Text(value, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
+        Text(
+          value,
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+        ),
       ],
     );
   }

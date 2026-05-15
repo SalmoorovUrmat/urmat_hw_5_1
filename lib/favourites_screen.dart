@@ -3,6 +3,8 @@ import 'package:urmat_hw_5_1/book.dart';
 import 'package:urmat_hw_5_1/book_details_screen.dart';
 
 class FavouritesScreen extends StatelessWidget {
+  const FavouritesScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +16,7 @@ class FavouritesScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 20),
-              
+
               TextField(
                 decoration: InputDecoration(
                   hintText: "Search here...",
@@ -28,10 +30,12 @@ class FavouritesScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 30),
-              Text("My favourites", 
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+              Text(
+                "My favourites",
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
               const SizedBox(height: 20),
-              
+
               Expanded(
                 child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -41,7 +45,8 @@ class FavouritesScreen extends StatelessWidget {
                     mainAxisSpacing: 20,
                   ),
                   itemCount: myBooks.length,
-                  itemBuilder: (context, index) => BookCard(book: myBooks[index]),
+                  itemBuilder: (context, index) =>
+                      BookCard(book: myBooks[index]),
                 ),
               ),
             ],
@@ -54,7 +59,7 @@ class FavouritesScreen extends StatelessWidget {
 
 class BookCard extends StatelessWidget {
   final Book book;
-  const BookCard({required this.book});
+  const BookCard({super.key, required this.book});
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +68,7 @@ class BookCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => BookDetailsScreen(book: book), 
+            builder: (context) => BookDetailsScreen(book: book),
           ),
         );
       },
@@ -75,14 +80,24 @@ class BookCard extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 boxShadow: [
-                  BoxShadow(color: const Color.fromARGB(66, 43, 41, 41), blurRadius: 16, offset: Offset(0, 0))
+                  BoxShadow(
+                    color: const Color.fromARGB(66, 43, 41, 41),
+                    blurRadius: 16,
+                    offset: Offset(0, 0),
+                  ),
                 ],
-                image: DecorationImage(image: AssetImage(book.image), fit: BoxFit.cover),
+                image: DecorationImage(
+                  image: AssetImage(book.image),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
           const SizedBox(height: 8),
-          Text(book.title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+          Text(
+            book.title,
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+          ),
           Text(book.author, style: TextStyle(color: Colors.grey, fontSize: 12)),
         ],
       ),
